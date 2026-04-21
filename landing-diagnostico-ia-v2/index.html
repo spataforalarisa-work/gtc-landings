@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnóstico IA Empresarial Gratuito — Global Talent Connections</title>
+  <meta name="description" content="Descubre exactamente qué procesos de tu empresa pueden automatizarse con IA. Diagnóstico gratuito, sin tecnicismos, sin compromisos.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #062E55;
+      --navy-soft: #0a2444;
+      --gold: #F59E0B;
+      --coral: #FF6B47;
+      --blue-prime: #2280AD;
+      --blue-light: #4AADDB;
+      --off-white: #F7F7F7;
+      --dark-gray: #37516b;
+      --border-soft: #d9e2ec;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--navy);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    .headline { font-family: 'Montserrat', sans-serif; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(6,46,85,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 0;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo img { height: 36px; display: block; }
+
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      padding: 48px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute;
+      top: -80px; right: -100px;
+      width: 500px; height: 500px;
+      background: rgba(34,128,173,0.08);
+      filter: blur(120px); border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute;
+      bottom: -80px; left: -80px;
+      width: 350px; height: 350px;
+      background: rgba(26,101,144,0.1);
+      filter: blur(100px); border-radius: 50%;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+    }
+
+    /* HERO TEXT */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(34,128,173,0.12);
+      border: 1px solid rgba(34,128,173,0.25);
+      border-radius: 100px; padding: 7px 16px; margin-bottom: 22px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+    .hero-badge span {
+      color: var(--blue-light); font-size: 11px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 800; line-height: 1.1;
+      color: white; margin-bottom: 18px; letter-spacing: -0.02em;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(15px, 1.6vw, 17px);
+      color: rgba(255,255,255,0.75);
+      max-width: 520px; margin-bottom: 28px; line-height: 1.65;
+    }
+    .hero-bullets {
+      list-style: none; display: flex; flex-direction: column; gap: 10px;
+    }
+    .hero-bullets li {
+      color: rgba(255,255,255,0.8); font-size: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-bullets li::before {
+      content: '✓';
+      color: #4ade80; font-weight: 700;
+      background: rgba(74,222,128,0.12);
+      border-radius: 50%; width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0;
+    }
+
+    /* HERO FORM CARD */
+    .hero-form-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    }
+    .form-card-header {
+      text-align: center; margin-bottom: 24px;
+    }
+    .form-card-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px; font-weight: 800;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .form-card-header p {
+      font-size: 13px; color: var(--dark-gray);
+    }
+    .form-field { margin-bottom: 14px; }
+    .form-field label {
+      display: block; font-size: 12px; font-weight: 600;
+      color: var(--dark-gray); margin-bottom: 5px; text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-field input {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 8px; font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: var(--navy); background: #fafbfc;
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-field input:focus { border-color: var(--blue-prime); background: white; }
+    .submit-btn {
+      width: 100%; padding: 15px;
+      background: var(--coral); color: white;
+      border: none; border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      cursor: pointer; margin-top: 6px;
+      transition: background .2s, transform .1s;
+    }
+    .submit-btn:hover { background: #e85a3a; transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-note {
+      text-align: center; font-size: 11px;
+      color: #9aa8b5; margin-top: 10px;
+    }
+    .form-success { display: none; text-align: center; padding: 20px 0; }
+    .form-success.visible { display: block; }
+    .success-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #dcfce7; color: #16a34a;
+      font-size: 26px; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    /* STATS */
+    .stats {
+      background: var(--navy);
+      padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 32px;
+      max-width: 640px; margin: 0 auto; text-align: center;
+    }
+    @media (max-width: 500px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px,3.5vw,42px); font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 6px; line-height: 1;
+    }
+    .stat-number.blue { color: var(--blue-light); }
+    .stat-number.gold { color: var(--gold); }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; }
+
+    /* BENEFITS */
+    .section { padding: 56px 0; }
+    .section-label {
+      font-size: 11px; font-weight: 700; color: var(--blue-prime);
+      text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(26px,3vw,38px); font-weight: 800;
+      color: var(--navy); margin-bottom: 12px; line-height: 1.2;
+    }
+    .section-title .gold { color: var(--gold); }
+    .section-subtitle {
+      font-size: 16px; color: var(--dark-gray);
+      max-width: 540px; margin-bottom: 32px;
+    }
+    .benefits-grid { display: grid; gap: 24px; }
+    @media (min-width: 768px) { .benefits-grid { grid-template-columns: repeat(3,1fr); } }
+    .benefit {
+      background: white; border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid var(--border-soft);
+      transition: box-shadow .2s;
+    }
+    .benefit:hover { box-shadow: 0 8px 32px rgba(6,46,85,0.1); }
+    .benefit-icon { font-size: 32px; margin-bottom: 16px; }
+    .benefit h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px; font-weight: 700;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .benefit p { font-size: 14px; color: var(--dark-gray); line-height: 1.6; }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background: var(--navy-soft);
+      padding: 44px 0; text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .cta-banner h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(22px,3vw,34px); font-weight: 800;
+      color: white; margin-bottom: 14px;
+    }
+    .cta-banner p { color: rgba(255,255,255,0.65); max-width: 500px; margin: 0 auto 28px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--coral); color: white;
+      padding: 16px 32px; border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px; font-weight: 700;
+      text-decoration: none; text-transform: uppercase;
+      letter-spacing: 0.08em; transition: background .2s;
+    }
+    .btn-primary:hover { background: #e85a3a; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--navy); color: rgba(255,255,255,0.4);
+      text-align: center; padding: 28px 0; font-size: 13px;
+    }
+    .footer strong { color: rgba(255,255,255,0.7); }
+  </style>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '3918451891789693');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=3918451891789693&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="nav-logo">
+        <img src="/logo.png" alt="Global Talent Connections">
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO con form -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Texto izquierda -->
+        <div class="hero-text">
+          <div class="hero-badge">
+            <div class="dot"></div>
+            <span>Diagnóstico IA gratuito — sin compromisos</span>
+          </div>
+          <h1 class="headline">
+            No es falta de presupuesto.<br>
+            No es falta de talento.<br>
+            <span class="gold">Es no saber por dónde empezar.</span>
+          </h1>
+          <p class="hero-sub">
+            La mayoría de empresas que no están usando IA tienen un solo problema: no saben exactamente qué procesos tienen mayor potencial de mejora. Nosotros lo analizamos por ti, gratis.
+          </p>
+          <ul class="hero-bullets">
+            <li>Identificamos qué automatizar primero en tu empresa</li>
+            <li>Sin tecnicismos — explicado en lenguaje de negocio</li>
+            <li>Entrega en menos de 24h, sin costo ni compromiso</li>
+          </ul>
+        </div>
+
+        <!-- Form derecha -->
+        <div class="hero-form-card">
+          <div id="form-main">
+            <div class="form-card-header">
+              <h2 class="headline">Solicita tu diagnóstico gratis</h2>
+              <p>Te lo enviamos en menos de 24h. Sin ventas.</p>
+            </div>
+            <form id="leadForm">
+              <div class="form-field">
+                <label for="name">Nombre completo *</label>
+                <input type="text" id="name" name="name" required placeholder="Tu nombre">
+              </div>
+              <div class="form-field">
+                <label for="company">Empresa *</label>
+                <input type="text" id="company" name="company" required placeholder="Nombre de tu empresa">
+              </div>
+              <div class="form-field">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="tu@empresa.com">
+              </div>
+              <div class="form-field">
+                <label for="phone">Teléfono / WhatsApp</label>
+                <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000">
+              </div>
+              <button type="submit" class="submit-btn" id="submitBtn">Quiero mi diagnóstico →</button>
+            </form>
+            <p class="form-note">Sin contratos. Sin ventas disfrazadas. Solo resultados.</p>
+          </div>
+          <div id="form-success" class="form-success">
+            <div class="success-icon">✓</div>
+            <h2 class="headline" style="font-size:22px;color:var(--navy);margin-bottom:8px;">¡Listo!</h2>
+            <p style="color:var(--dark-gray);font-size:14px;">Tu diagnóstico está en camino. Te contactamos en menos de 24h.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number blue">3</div>
+          <div class="stat-label">Áreas clave identificadas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number gold">0€</div>
+          <div class="stat-label">Costo del diagnóstico</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number gold">&lt;24h</div>
+          <div class="stat-label">Tiempo de entrega</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="section benefits" id="proceso">
+    <div class="container">
+      <p class="section-label">¿Qué incluye el diagnóstico?</p>
+      <h2 class="section-title headline">Claridad total sobre la IA en <span class="gold">tu empresa</span></h2>
+      <p class="section-subtitle">Sin tecnicismos. Sin consultoras caras. Un análisis real de dónde puede impactar la IA en tu operación.</p>
+      <div class="benefits-grid">
+        <div class="benefit">
+          <div class="benefit-icon">🔍</div>
+          <h3 class="headline">Identificación de procesos</h3>
+          <p>Mapeamos tus operaciones actuales y detectamos qué tareas tienen mayor potencial de automatización — priorizadas por impacto y facilidad.</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">🤖</div>
+          <h3 class="headline">Herramientas recomendadas</h3>
+          <p>No te decimos "usa IA" — te decimos exactamente qué herramientas, por qué, y cómo encajan en tu sector sin complejidad innecesaria.</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">👤</div>
+          <h3 class="headline">Experto disponible</h3>
+          <p>Si quieres ejecutarlo, tienes talento experto en IA disponible en remoto — sin contratar un equipo interno costoso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2 class="headline">Tu competencia ya está preguntando cómo usar IA.</h2>
+      <p>La pregunta no es si va a transformar tu industria — eso ya está pasando. La pregunta es si tu empresa va a liderar ese cambio.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <strong>Global Talent Connections</strong> · Miami · España<br>
+      © 2025 GTC. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    function getUTMs() {
+      const p = new URLSearchParams(window.location.search);
+      return {
+        utm_source: p.get('utm_source') || 'meta',
+        utm_medium: p.get('utm_medium') || 'paid',
+        utm_campaign: p.get('utm_campaign') || 'diagnostico_ia_meta',
+      };
+    }
+
+    document.getElementById('leadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      const data = {
+        name: document.getElementById('name').value,
+        company: document.getElementById('company').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        source: 'landing_diagnostico_ia_hero',
+        ...getUTMs(),
+      };
+
+      try {
+        const res = await fetch('https://globaltalentconnections.online/api/leads/public', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          document.getElementById('form-main').style.display = 'none';
+          fbq('track', 'Lead');
+          document.getElementById('form-success').classList.add('visible');
+        } else { throw new Error(); }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Quiero mi diagnóstico →';
+        alert('Hubo un problema. Por favor inténtalo de nuevo.');
+      }
+    });
+  </script>
+
+</body>
+</html>
