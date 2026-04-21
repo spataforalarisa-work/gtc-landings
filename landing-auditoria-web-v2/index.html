@@ -400,6 +400,21 @@
     </div>
   </section>
 
+  <!-- DOWNLOAD GUIDE SECTION -->
+  <section class="section guide-download" style="background: rgba(240,245,250,0.6); border-top: 1px solid rgba(6,46,85,0.08);">
+    <div class="container" style="max-width: 640px; text-align: center;">
+      <p class="section-label">Tu guía descargable aquí</p>
+      <h2 class="section-title headline">Guía del Asistente <span class="gold">Remoto GTC</span></h2>
+      <p class="section-subtitle">Procesos probados, templates listos para usar, y checklist de implementación. Todo lo que necesitas para contratar y gestionar asistentes remotos especializados — sin costo.</p>
+      <button id="downloadGuideBtn" class="btn-primary" style="margin-top: 24px;">
+        Descargar Guía (PDF)
+      </button>
+      <p style="font-size: 13px; color: var(--dark-gray); margin-top: 16px;">
+        Tu auditoría personalizada se enviará por email en menos de 1 hora.
+      </p>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
@@ -418,17 +433,20 @@
       };
     }
 
+    let currentLeadData = {};
+
     document.getElementById('leadForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
       btn.textContent = 'Enviando...';
 
-      const data = {
+      currentLeadData = {
         name: document.getElementById('name').value,
         company: document.getElementById('company').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
+        landing_url: document.getElementById('landing_url').value,
         notes: 'Landing URL: ' + document.getElementById('landing_url').value,
         source: 'landing_auditoria_web_hero',
         ...getUTMs(),
@@ -438,7 +456,7 @@
         const res = await fetch('https://globaltalentconnections.online/api/leads/public', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: JSON.stringify(currentLeadData),
         });
         if (res.ok) {
           document.getElementById('form-main').style.display = 'none';
@@ -449,6 +467,40 @@
         btn.disabled = false;
         btn.textContent = 'Solicitar auditoría gratis →';
         alert('Hubo un problema. Por favor inténtalo de nuevo.');
+      }
+    });
+
+    document.getElementById('downloadGuideBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('downloadGuideBtn');
+      btn.disabled = true;
+      btn.textContent = 'Descargando...';
+
+      try {
+        const link = document.createElement('a');
+        link.href = '/pdf/guia-asistente-gtc-FINAL.pdf';
+        link.download = 'Guia-Asistente-GTC.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        if (currentLeadData.email) {
+          await fetch('https://globaltalentconnections.online/api/leads/send-diagnosis', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: currentLeadData.email,
+              name: currentLeadData.name,
+              company: currentLeadData.company,
+              landing_url: currentLeadData.landing_url,
+              type: 'auditoria_web',
+            }),
+          });
+        }
+        btn.textContent = 'Descargar Guía (PDF)';
+      } catch (err) {
+        console.error('Error:', err);
+        btn.textContent = 'Descargar Guía (PDF)';
+        btn.disabled = false;
       }
     });
   </script>
